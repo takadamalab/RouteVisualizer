@@ -1,12 +1,14 @@
 const fs = require('fs');
-let date = '2020/12/13';
-let team = 'Hopes';
-let experimentalName = '20201213';
-let startLat = 0;
-let startLng = 0;
-let subGoalNumber = 2;
-let goalLat = 0;
-let goalLng = 0;
+let date = '2021/11/19';
+let team = 'Carryber';
+let experimentalName = 'e2e_1023_carryber';
+let startLat = 35.64310167;
+let startLng = 139.52329000;
+let subGoalLat = 35.64313073; 
+let subGoalLng = 139.52337503;
+let goalLat = 35.64325030;
+let goalLng = 139.52337503;
+let subGoalNumber = 1;
 
 let folderName = './log/' + experimentalName;
 let gpsLog = fs.readFileSync(folderName + '/gps.csv', 'utf-8');
@@ -30,7 +32,7 @@ arlisson += '\t\t},\n';
 arlisson += '\t\t"sub_goal": {\n';
 arlisson += '\t\t\t"latitude": [\n';
 for(i = 0; i < subGoalNumber; i++){
-    arlisson += '\t\t\t\t' + 0;
+    arlisson += '\t\t\t\t' + subGoalLat;
     if(i != subGoalNumber - 1){
         arlisson += ',\n';
     }else{
@@ -40,9 +42,9 @@ for(i = 0; i < subGoalNumber; i++){
 arlisson += '\t\t\t],\n';
 arlisson += '\t\t\t"longitude": [\n';
 for(i = 0; i < subGoalNumber; i++){
-    arlisson += '\t\t\t\t' + 0;
+    arlisson += '\t\t\t\t' + subGoalLng;
     if(i != subGoalNumber - 1){
-        arlisson += ',\n';
+        arlisson += subGoalLng + ',\n';
     }else{
         arlisson += '\n';
     }
@@ -58,7 +60,7 @@ arlisson += '\t"log": {\n';
 arlisson += '\t\t"sub_goal": {\n';
 arlisson += '\t\t\t"latitude": [\n';
 for(i = 0; i < subGoalNumber; i++){
-    arlisson += '\t\t\t\t' + 0;
+    arlisson += '\t\t\t\t' + subGoalLat;
     if(i != subGoalNumber - 1){
         arlisson += ',\n';
     }else{
@@ -68,7 +70,7 @@ for(i = 0; i < subGoalNumber; i++){
 arlisson += '\t\t\t],\n';
 arlisson += '\t\t\t"longitude": [\n';
 for(i = 0; i < subGoalNumber; i++){
-    arlisson += '\t\t\t\t' + 0;
+    arlisson += '\t\t\t\t' + subGoalLng;
     if(i != subGoalNumber - 1){
         arlisson += ',\n';
     }else{
@@ -135,6 +137,7 @@ arlisson += '\t\t]\n';
 arlisson += '\t}\n';
 arlisson += '}';
 
-fs.writeFile(experimentalName + ".json", arlisson, "utf8", (err) => {
+output_folder = "../map_for_arliss/public/json/" + experimentalName + ".json"
+fs.writeFile(output_folder, arlisson, "utf8", (err) => {
     if(err) console.log(err);
 });
